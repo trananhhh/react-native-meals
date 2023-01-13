@@ -1,20 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import MealsOverviewScreen from './screens/MealsOverviewScreen';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello World!!!!</Text>
-      <StatusBar style="auto" />vl 511
-    </View>
-  );
+    return (
+        <SafeAreaView>
+            <StatusBar style="light"></StatusBar>
+            <MealsOverviewScreen />
+        </SafeAreaView>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
