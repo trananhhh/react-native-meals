@@ -1,24 +1,23 @@
-import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import CategoryGridTile from '../components/CategoryGridTile';
-import { CATEGORIES } from '../data/dummy-data';
+import { View, StyleSheet, FlatList, Text, ScrollView } from 'react-native';
+import MealItem from '../components/MealItem';
+import { MEALS } from '../data/dummy-data';
 
-const renderCategoryItem = (itemData) => {
-    return (
-        <CategoryGridTile
-            title={itemData.item.title}
-            color={itemData.item.color}
-        />
+const MealsOverviewScreen = ({ route }) => {
+    const { categoryId } = route.params;
+
+    const mealsRenderList = MEALS.filter((meal) =>
+        meal.categoryIds.includes(categoryId)
     );
-};
 
-const MealsOverviewScreen = () => {
+    const renderMealItem = (itemData) => {
+        return <MealItem mealData={itemData.item} />;
+    };
+
     return (
         <FlatList
-            data={CATEGORIES}
+            data={mealsRenderList}
             keyExtractor={(item) => item.id}
-            renderItem={renderCategoryItem}
-            numColumns={2}
+            renderItem={renderMealItem}
         />
     );
 };
